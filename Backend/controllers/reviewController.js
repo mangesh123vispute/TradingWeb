@@ -1,6 +1,6 @@
-const Review = require("../models/review.models");
+import Review from "../models/review.models.js";
 
-exports.createReview = async (req, res) => {
+export const createReview = async (req, res) => {
   try {
     const review = await Review.create(req.body);
     res.status(201).json({

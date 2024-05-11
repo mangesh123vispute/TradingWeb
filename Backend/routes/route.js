@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const userController = require("../controllers/userController");
-const reviewController = require("../controllers/reviewController");
+import { createUser } from "../controllers/userController.js";
+import { createReview } from "../controllers/reviewController.js";
 
-router.post("/users", userController.createUser);
-router.post("/reviews", reviewController.createReview);
+router.post("/users", createUser);
+router.post("/reviews", createReview);
 
-module.exports = router;
+export default router;
