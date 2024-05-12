@@ -13,10 +13,11 @@ import mongoose from "mongoose";
 // create review
 // send response
 export const createReview = async (req, res) => {
+  console.log("This is the req id ", req.user._id);
   try {
-    const { userId, content, rating } = req.body;
-    console.log(`createReview ${userId} ${content} ${rating}`);
-    if (!(userId && content && rating)) {
+    const { content, rating } = req.body;
+    console.log(`createReview ${req.user._id} ${content} ${rating}`);
+    if (!(content && rating)) {
       return res
         .status(400)
         .json({ status: "fail", message: "All fields are required" });
@@ -26,20 +27,23 @@ export const createReview = async (req, res) => {
         .status(400)
         .json({ status: "fail", message: "Rating must be between 1 to 5" });
     }
-    const user = await User.findById(userId);
+    const user = await User.findById(req.user._id);
     if (!user) {
       return res
         .status(400)
         .json({ status: "fail", message: "User does not exist" });
     }
-    const review = await Review.findOne({ userId });
+    const review = await Review.findOne(req.user._id);
     if (review) {
       return res
         .status(400)
         .json({ status: "fail", message: "User already reviewed" });
     }
 
-    const NewReview = await Review.create(req.body);
+    const NewReview = await Review.create({
+      ...req.body,
+      userId: req.user._id,
+    });
     res.status(201).json({
       status: "success",
       data: {
@@ -47,6 +51,7 @@ export const createReview = async (req, res) => {
       },
     });
   } catch (err) {
+    console.log(err.message);
     res.status(401).json({
       status: "fail",
       message: err?.message,
