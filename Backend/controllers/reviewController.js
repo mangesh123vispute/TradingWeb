@@ -64,13 +64,41 @@ export const createReview = async (req, res) => {
 //get all reviews
 //send them to frontend
 // (accessable to all )
+// export const getReview = async (req, res) => {
+//   try {
+//     const allReviews = await Review.find();
+//     res.status(200).json({
+//       status: "success",
+//       data: {
+//         reviews: allReviews,
+//       },
+//     });
+//   } catch (err) {
+//     res.status(500).json({
+//       status: "error",
+//       message: "Failed to fetch reviews",
+//       error: err.message,
+//     });
+//   }
+// };
+
 export const getReview = async (req, res) => {
   try {
-    const allReviews = await Review.find();
+    const allReviews = await Review.find().populate('userId', 'firstName lastName');
+    const reviewsWithUserNames = allReviews.map(review => ({
+      _id: review._id,
+      content: review.content,
+      rating: review.rating,
+      user: {
+        firstName: review.userId.firstName,
+        lastName: review.userId.lastName
+      }
+    }));
+
     res.status(200).json({
       status: "success",
       data: {
-        reviews: allReviews,
+        reviews: reviewsWithUserNames,
       },
     });
   } catch (err) {

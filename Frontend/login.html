@@ -587,7 +587,7 @@
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
 				<i aria-hidden="true" class="jki jki-chevron-right-line"></i>			</span>
-						<span class="elementor-button-text">Login/Signup</span>
+						<span class="elementor-button-text"></span>
 		</span>
 					</a>
                                                                         </div>
@@ -718,6 +718,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            const loginSignupButton = document.querySelector(".elementor-button-text");
+
+                // Function to update the button text based on login status
+                function updateButtonText() {
+                    if (localStorage.getItem("accessToken")) {
+                        loginSignupButton.textContent = "Logout";
+                    } else {
+                        loginSignupButton.textContent = "Login/Signup";
+                    }
+                }
+
+                updateButtonText();
+
             const registerFormContainer = document.getElementById('register-form-container');
             const loginFormContainer = document.getElementById('login-form-container');
             const toggleRegister = document.getElementById('toggle-register');
@@ -764,7 +778,8 @@
                     }
 
                     const data = await response.json();
-                    console.log(data); // Handle response data, like storing tokens
+                    console.log("login data ",data); 
+                    localStorage.setItem('accessToken', data.data.accessToken);// Handle response data, like storing tokens
                     document.getElementById('login-success-msg').style.display = 'block';
                     setTimeout(() => {
                         window.location.href = 'index.html'; // Redirect to index.html after 2 seconds
@@ -801,13 +816,30 @@
                     console.log(data); // Handle response data, like redirecting to a different page
                     document.getElementById('register-success-msg').style.display = 'block';
                     setTimeout(() => {
-                        window.location.href = 'index.html'; // Redirect to index.html after 2 seconds
+                        window.location.href = 'login.html'; // Redirect to index.html after 2 seconds
                     }, 2000);
                 } catch (error) {
                     console.error('Registration failed:', error.message);
                 }
             });
         });
+
+
+
+        loginSignupButton.addEventListener('click', () => {
+        if (localStorage.getItem("accessToken")) {
+            localStorage.removeItem("accessToken");
+            updateButtonText(); // Update button text after logout
+        } else {
+            // Handle login/signup action
+            // For example, redirect to the login/signup page
+            window.location.href = 'login.html'; // Adjust the URL as per your application
+        }
+    });
+
+
+
+
     </script>
 
 

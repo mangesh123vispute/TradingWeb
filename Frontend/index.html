@@ -2041,7 +2041,13 @@
 
 
 
-
+                                            <form id="review-form">
+                                                <label for="content">Content:</label><br>
+                                                <textarea id="content" name="content" rows="4" cols="50"></textarea><br>
+                                                <label for="rating">Rating:</label><br>
+                                                <input type="number" id="rating" name="rating" min="1" max="5"><br>
+                                                <button type="submit">Submit</button>
+                                            </form>
 
                                             <section class="elementor-section elementor-inner-section elementor-element elementor-element-6043564 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6043564" data-element_type="section">
                                                 <div class="elementor-container elementor-column-gap-default">
@@ -2049,15 +2055,15 @@
                                                         <div class="elementor-widget-wrap elementor-element-populated">
                                                             <div class="elementor-element elementor-element-263739d elementor--star-style-star_unicode elementor-widget__width-auto elementor-widget elementor-widget-star-rating" data-id="263739d" data-element_type="widget" data-widget_type="star-rating.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <style>
+                                                                     <style>
                                                                         /*! elementor - v3.17.0 - 08-11-2023 */
 
                                                 
-                                                                        .elementor-star-rating {
+                                                                        <!-- .elementor-star-rating {
                                                                             color: #ccd6df;
                                                                             font-family: eicons;
                                                                             display: inline-block
-                                                                        }
+                                                                        } -->
 
                                                                         .elementor-star-rating i {
                                                                             display: inline-block;
@@ -2193,10 +2199,10 @@
                                                                         .elementor--star-style-star_unicode .elementor-star-rating i:not(.elementor-star-empty):before {
                                                                             content: "★"
                                                                         }
-                                                                    </style>
-                                                                    <div class="elementor-star-rating__wrapper">
+                                                                    </style> 
+                                                                    <!-- <div class="elementor-star-rating__wrapper">
                                                                         <div class="elementor-star-rating" title="5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i>                                                                            <span itemprop="ratingValue" class="elementor-screen-only">5/5</span></div>
-                                                                    </div>
+                                                                    </div> -->
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-6e8107c elementor-widget elementor-widget-testimonial" data-id="6e8107c" data-element_type="widget" data-widget_type="testimonial.default">
@@ -2266,19 +2272,13 @@
                                                                         }
                                                                     </style>
 
-<div id="reviews-container"></div>
 
-<form id="review-form">
-    <label for="content">Content:</label><br>
-    <textarea id="content" name="content" rows="4" cols="50"></textarea><br>
-    <label for="rating">Rating:</label><br>
-    <input type="number" id="rating" name="rating" min="1" max="5"><br>
-    <button type="submit">Submit</button>
-</form>
+<div id="reviews-container">
+
+</div>
 
 
-
-                                                                    <div class="elementor-testimonial-wrapper">
+                                                                     <!-- <div class="elementor-testimonial-wrapper">
                                                                         <div class="elementor-testimonial-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
 
                                                                         <div class="elementor-testimonial-meta elementor-has-image elementor-testimonial-image-position-aside">
@@ -2296,7 +2296,7 @@
                                                                                 
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>  -->
                                                                     
                                                                 </div>
                                                             </div>
@@ -2307,7 +2307,7 @@
                                                             
                                                         </div>
                                                     </div> -->
-                                                    <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-f0ad1f7 elementor-invisible" data-id="f0ad1f7" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInRight&quot;}">
+                                                    <!-- <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-f0ad1f7 elementor-invisible" data-id="f0ad1f7" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInRight&quot;}">
                                                         <div class="elementor-widget-wrap elementor-element-populated">
                                                             <div class="elementor-element elementor-element-a9e0d26 elementor--star-style-star_unicode elementor-widget__width-auto elementor-widget elementor-widget-star-rating" data-id="a9e0d26" data-element_type="widget" data-widget_type="star-rating.default">
                                                                 <div class="elementor-widget-container">
@@ -2339,7 +2339,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </section>
 
